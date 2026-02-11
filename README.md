@@ -197,13 +197,19 @@ type nul > VigilantEdge\README.md
 
 ## 🧱 LAYER 1 – Network & Traffic Control Layer
 
-⚪ The **Network & Traffic Control Layer** acts as the entry point of VigilantEdge.  
-It is responsible for traffic interception, request routing, API control, and high-speed response handling.
+⚪ The **Network & Traffic Control Layer** is the **entry point** of VigilantEdge.
+
+It intercepts traffic, applies first-line controls, terminates TLS, routes requests into the platform, and enforces **“edge” security policies** before heavy AI processing begins.
+
+This ensures that only normalized, policy-compliant, and pre-filtered traffic is forwarded to the deeper intelligence layers of the system.
 
 ### 🔧Technologies Used:
 1. Nginx
 2. FastAPI
-3. Redis
+3. Uvicorn
+4. Redis (edge rate-limit + fast blocking decisions)
+5. Pydantic (strict schema validation at ingestion boundary)
+6. Envoy (service proxy for advanced routing + mTLS hooks)
 
 ## 🤖 LAYER 2 – AI & Intelligence Engine
 
