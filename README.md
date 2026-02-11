@@ -233,9 +233,12 @@ This layer transforms raw traffic data into actionable threat intelligence.
 This layer enforces cryptographic integrity, identity validation, and secret protection to align with **Zero Trust security principles**.
 
 ### 🔧Technologies Used:
-1. cryptography
-2. python-jose (JWT)
-3. HashiCorp Vault 
+1. cryptography (core encryption/signing primitives)
+2. python-jose (JWT) (token handling)
+3. Keycloak (OIDC/OAuth2) (enterprise identity, SSO, roles)
+4. HashiCorp Vault (secrets + key lifecycle + rotation)
+5. OPA (Open Policy Agent) (policy-as-code authorization)
+6. mTLS stack: Envoy + cert-manager (service-to-service authentication)
 
 ## ⚙️ LAYER 4 – Autonomous Response Layer
 
@@ -281,7 +284,7 @@ This architecture prevents bottlenecks in the ingestion layer and allows AI proc
 4. RabbitMQ (reliable task queue broker for Celery)
 5. APScheduler (scheduled security jobs, periodic tasks)
 
-🧩 LAYER 8 – Detection Engineering Layer 
+## 🧩 LAYER 8 – Detection Engineering Layer 
 
 🟡 The **Detection Engineering Layer** adds rule-based and protocol-aware detection that complements machine learning models.
 
