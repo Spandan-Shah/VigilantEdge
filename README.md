@@ -255,7 +255,7 @@ This layer transforms detection into **automated defensive action**, minimizing 
 🟣 The **SOC & Visualization Layer** provides real-time visibility, alerting, and human-in-the-loop interaction for security analysts.
 This layer ensures that VigilantEdge not only detects and mitigates threats autonomously but also provides transparent monitoring, explainability, and operational control for Security Operations Center (SOC) teams.
 
-## 🔧Technologies:
+## 🔧Technologies Used:
 1. React
 2. Recharts
 
@@ -264,7 +264,7 @@ This layer ensures that VigilantEdge not only detects and mitigates threats auto
 🟢 The **Testing & Validation Layer** ensures the reliability, robustness, and security effectiveness of VigilantEdge under real-world and adversarial conditions.
 This layer validates detection accuracy, response correctness, performance stability, and resilience against adaptive attackers.
 
-## 🔧Technologies:
+## 🔧Technologies Used:
 1. PyTest
 2. Custom attack simulators
 
@@ -276,7 +276,7 @@ Instead of processing everything synchronously (which can drop events and slow d
 
 This architecture prevents bottlenecks in the ingestion layer and allows AI processing, analytics, and reporting to scale independently.
 
-### 🔧 Technologies:
+### 🔧Technologies:
 
 1. Apache Kafka (event streaming backbone)
 2. Kafka Connect (pipelines between Kafka ↔ OpenSearch/Postgres)
@@ -290,9 +290,23 @@ This architecture prevents bottlenecks in the ingestion layer and allows AI proc
 
 In real-world SOC systems, security never relies solely on ML. Instead, it combines **signatures + telemetry + rules + ML** to achieve high precision and operational reliability.
 
-🔧 Technologies Used:
+### 🔧Technologies Used:
 
 1. Suricata (network IDS signatures + protocol metadata)
 2. Zeek (deep network telemetry extraction)
 3. YARA (payload/pattern matching engine)
 4. Sigma Rules (standard rule format for detections)
+
+## 🧬 LAYER 9 – Cryptography & Post-Quantum Security Layer 
+
+🔵 The **Cryptography & Post-Quantum Security Layer** hardens VigilantEdge against current and future cryptographic threats.
+
+This layer introduces modern, secure cryptographic primitives and supports post-quantum cryptography (PQC) experimentation to reinforce the platform’s long-term security posture.
+
+It ensures that VigilantEdge is not only resilient against today’s threats but also prepared for emerging risks posed by quantum computing.
+
+### 🔧Technologies Used:
+
+1. cryptography (classical crypto foundation)
+2. libsodium / PyNaCl (safe modern crypto APIs)
+3. Open Quantum Safe (OQS) / oqs-provider (PQC algorithm experiments)
