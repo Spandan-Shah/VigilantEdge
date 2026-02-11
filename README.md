@@ -193,4 +193,14 @@ type nul > VigilantEdge\README.md
 
 ## 🏗 VigilantEdge – Unified Technology Architecture
 
+> Explore the core technologies used in this application. Below, you’ll find a detailed list of our frameworks and libraries, along with insights into why they were the right fit for our goals.
 
+## 🧱 LAYER 1 – Network & Traffic Control Layer
+
+⚪ The **Network & Traffic Control Layer** acts as the entry point of VigilantEdge.  
+It is responsible for traffic interception, request routing, API control, and high-speed response handling.
+
+### 🔧 Technologies Used:
+#### 1. Nginx
+#### 2. FastAPI
+#### 3. Redis
