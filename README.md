@@ -80,4 +80,46 @@ By combining **adaptive detection**, **autonomous response**, and **continuous l
     ├── adversarial_tests/       # Tests against adaptive and intelligent attackers
     ├── attack_simulations/      # Simulated attack scenarios and replay tests
     └── performance_tests/       # Load, latency, and scalability testing
+```
+
+## 📁 VigilantEdge Directory Bootstrap (Architecture-Aligned Layout)
+
+The following directory structure initializes the complete **VigilantEdge project layout**, covering **AI security intelligence**, **traffic ingestion**, **decision-making core**, **response automation**, **SOC integration**, **security primitives**, **testing**, and **research documentation**.
+
+This structure is created using a single Windows command sequence (`mkdir`) to ensure a **consistent, reproducible, and architecture-aligned project setup**.
+
+```bat
+VigilantEdge\docs\architecture ^
+VigilantEdge\docs\compliance ^
+VigilantEdge\docs\research ^
+VigilantEdge\data\raw ^
+VigilantEdge\data\processed ^
+VigilantEdge\data\features ^
+VigilantEdge\ingestion\proxy ^
+VigilantEdge\ingestion\log_collector ^
+VigilantEdge\ingestion\schema ^
+VigilantEdge\core\normalizer ^
+VigilantEdge\core\trust_engine ^
+VigilantEdge\core\threat_scoring ^
+VigilantEdge\core\decision_engine ^
+VigilantEdge\ai_engine\anomaly_detection ^
+VigilantEdge\ai_engine\zero_day_simulation ^
+VigilantEdge\ai_engine\red_teaming ^
+VigilantEdge\ai_engine\explainability ^
+VigilantEdge\response_engine\mitigation ^
+VigilantEdge\response_engine\self_healing ^
+VigilantEdge\response_engine\deception ^
+VigilantEdge\response_engine\rule_optimization ^
+VigilantEdge\soc_interface\dashboard ^
+VigilantEdge\soc_interface\copilot ^
+VigilantEdge\soc_interface\alerts ^
+VigilantEdge\security\crypto ^
+VigilantEdge\security\auth ^
+VigilantEdge\security\secrets ^
+VigilantEdge\tests\attack_simulations ^
+VigilantEdge\tests\performance_tests ^
+VigilantEdge\tests\adversarial_tests ^
+VigilantEdge\scripts ^
+VigilantEdge\config
+
 
