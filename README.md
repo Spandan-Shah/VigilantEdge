@@ -325,3 +325,13 @@ Security platforms require more than simple log storage. This layer provides str
 3. OpenSearch / Elasticsearch (SOC search engine over events/logs)
 4. S3 / MinIO (datasets + model artifacts + large logs)
 5. ClickHouse (high-speed time-series security analytics)
+
+## 📈 LAYER 11 – Observability & Telemetry Layer
+
+⚪ The **Observability & Telemetry Layer** proves that VigilantEdge operates reliably under load and provides full visibility across the security pipeline.
+
+### 🔧Technologies Used:
+1. Prometheus (metrics collection)
+2. Grafana (dashboards)
+3. OpenTelemetry (distributed traces)
+4. Loki (platform/system log aggregation)
