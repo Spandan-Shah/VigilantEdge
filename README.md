@@ -121,5 +121,25 @@ VigilantEdge\tests\performance_tests ^
 VigilantEdge\tests\adversarial_tests ^
 VigilantEdge\scripts ^
 VigilantEdge\config
+```
+
+## 🧱 Initial File Scaffold Setup
+
+The following commands initialize **core project files** required for configuration, automation, documentation, and execution of the VigilantEdge system.
+
+These files act as **placeholders and entry points**, ensuring a clean, consistent structure before implementation begins.
+
+```bat
+type nul > README.md
+type nul > requirements.txt
+
+type nul > scripts\setup_env.sh
+type nul > scripts\run_pipeline.sh
+type nul > scripts\simulate_attack.py
+
+type nul > config\system.yaml
+type nul > config\thresholds.yaml
+type nul > config\model_params.yaml
+```
 
 
