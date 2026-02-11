@@ -223,6 +223,9 @@ This layer transforms raw traffic data into actionable threat intelligence.
 4. PyTorch
 5. SHAP
 6. LIME
+7. NetworkX (attack graphs in code)
+8. Neo4j (graph database for attribution + kill-chain mapping)
+9. ART (Adversarial Robustness Toolbox) (adversarial ML testing)
 
 ## 🔐 LAYER 3 – Security & Zero Trust Layer
 
