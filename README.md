@@ -347,3 +347,19 @@ Security AI must not be a black box. Every model must be reproducible, versioned
 2. DVC (dataset version control)
 3. ONNX (model export standard)
 4. onnxruntime (optimized inference runtime)
+
+## 🛡️ LAYER 13 – DevSecOps, Containerization & CI/CD Layer
+
+⚫ The **DevSecOps & Deployment Layer** ensures that VigilantEdge is deployable, scalable, and continuously secured across environments.
+
+This layer standardizes builds, scans container images, automates testing pipelines, and enables SOC-grade production deployments.
+
+It bridges development, security, and operations into a unified workflow.
+
+### 🔧Technologies Used:
+1. Docker
+2. Docker Compose
+3. Kubernetes
+4. Helm
+5. GitHub Actions
+6. Trivy (container vulnerability scanning)
