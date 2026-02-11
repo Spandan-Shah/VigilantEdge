@@ -92,33 +92,34 @@ This structure is created using a single Windows command sequence (`mkdir`) to e
 VigilantEdge\docs\architecture ^
 VigilantEdge\docs\compliance ^
 VigilantEdge\docs\research ^
-VigilantEdge\data\raw ^
-VigilantEdge\data\processed ^
-VigilantEdge\data\features ^
-VigilantEdge\ingestion\proxy ^
-VigilantEdge\ingestion\log_collector ^
+VigilantEdge\ingestion\reverse_proxy ^
+VigilantEdge\ingestion\api_gateway ^
 VigilantEdge\ingestion\schema ^
 VigilantEdge\core\normalizer ^
 VigilantEdge\core\trust_engine ^
 VigilantEdge\core\threat_scoring ^
 VigilantEdge\core\decision_engine ^
 VigilantEdge\ai_engine\anomaly_detection ^
-VigilantEdge\ai_engine\zero_day_simulation ^
+VigilantEdge\ai_engine\zero_day_detection ^
 VigilantEdge\ai_engine\red_teaming ^
 VigilantEdge\ai_engine\explainability ^
 VigilantEdge\response_engine\mitigation ^
 VigilantEdge\response_engine\self_healing ^
 VigilantEdge\response_engine\deception ^
 VigilantEdge\response_engine\rule_optimization ^
-VigilantEdge\soc_interface\dashboard ^
+VigilantEdge\soc_interface\backend ^
+VigilantEdge\soc_interface\frontend\dashboard ^
+VigilantEdge\soc_interface\frontend\charts ^
 VigilantEdge\soc_interface\copilot ^
-VigilantEdge\soc_interface\alerts ^
 VigilantEdge\security\crypto ^
 VigilantEdge\security\auth ^
 VigilantEdge\security\secrets ^
-VigilantEdge\tests\attack_simulations ^
-VigilantEdge\tests\performance_tests ^
+VigilantEdge\data\raw ^
+VigilantEdge\data\processed ^
+VigilantEdge\data\features ^
+VigilantEdge\tests\attack_tests ^
 VigilantEdge\tests\adversarial_tests ^
+VigilantEdge\tests\load_tests ^
 VigilantEdge\scripts ^
 VigilantEdge\config
 ```
@@ -130,16 +131,64 @@ The following commands initialize **core project files** required for configurat
 These files act as **placeholders and entry points**, ensuring a clean, consistent structure before implementation begins.
 
 ```bat
-type nul > README.md
-type nul > requirements.txt
+type nul > VigilantEdge\docs\architecture\system_architecture.md
+type nul > VigilantEdge\docs\architecture\component_diagram.md
+type nul > VigilantEdge\docs\architecture\data_flow.md
+type nul > VigilantEdge\docs\architecture\trust_boundaries.md
 
-type nul > scripts\setup_env.sh
-type nul > scripts\run_pipeline.sh
-type nul > scripts\simulate_attack.py
+type nul > VigilantEdge\docs\compliance\gdpr.md
+type nul > VigilantEdge\docs\compliance\iso27001.md
+type nul > VigilantEdge\docs\compliance\nist.md
 
-type nul > config\system.yaml
-type nul > config\thresholds.yaml
-type nul > config\model_params.yaml
+type nul > VigilantEdge\docs\research\abstract.md
+type nul > VigilantEdge\docs\research\methodology.md
+type nul > VigilantEdge\docs\research\experiments.md
+type nul > VigilantEdge\docs\research\future_work.md
+
+type nul > VigilantEdge\ingestion\reverse_proxy\nginx.conf
+type nul > VigilantEdge\ingestion\reverse_proxy\traffic_forwarder.py
+type nul > VigilantEdge\ingestion\api_gateway\auth_middleware.py
+type nul > VigilantEdge\ingestion\api_gateway\rate_limiter.py
+type nul > VigilantEdge\ingestion\schema\event_schema.json
+
+type nul > VigilantEdge\core\normalizer\normalize.py
+type nul > VigilantEdge\core\trust_engine\zero_trust.py
+type nul > VigilantEdge\core\threat_scoring\scoring.py
+type nul > VigilantEdge\core\decision_engine\orchestrator.py
+
+type nul > VigilantEdge\ai_engine\anomaly_detection\isolation_forest.py
+type nul > VigilantEdge\ai_engine\anomaly_detection\one_class_svm.py
+type nul > VigilantEdge\ai_engine\anomaly_detection\baseline_training.py
+type nul > VigilantEdge\ai_engine\zero_day_detection\behavior_sequence_model.py
+type nul > VigilantEdge\ai_engine\red_teaming\attack_simulator.py
+type nul > VigilantEdge\ai_engine\explainability\shap_explainer.py
+type nul > VigilantEdge\ai_engine\explainability\lime_explainer.py
+
+type nul > VigilantEdge\response_engine\mitigation\firewall_update.py
+type nul > VigilantEdge\response_engine\mitigation\rate_blocker.py
+type nul > VigilantEdge\response_engine\self_healing\config_rollback.py
+type nul > VigilantEdge\response_engine\self_healing\auto_patch.py
+type nul > VigilantEdge\response_engine\deception\honeytokens.py
+type nul > VigilantEdge\response_engine\deception\fake_endpoints.py
+type nul > VigilantEdge\response_engine\rule_optimization\adaptive_rules.py
+
+type nul > VigilantEdge\soc_interface\backend\soc_api.py
+type nul > VigilantEdge\soc_interface\copilot\ai_assistant.py
+
+type nul > VigilantEdge\security\crypto\key_manager.py
+type nul > VigilantEdge\security\auth\jwt_auth.py
+type nul > VigilantEdge\security\secrets\vault_adapter.py
+
+type nul > VigilantEdge\scripts\setup_env.sh
+type nul > VigilantEdge\scripts\start_system.sh
+type nul > VigilantEdge\scripts\simulate_attack.py
+
+type nul > VigilantEdge\config\system.yaml
+type nul > VigilantEdge\config\thresholds.yaml
+type nul > VigilantEdge\config\models.yaml
+
+type nul > VigilantEdge\requirements.txt
+type nul > VigilantEdge\README.md
 ```
 
 
