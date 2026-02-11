@@ -335,3 +335,15 @@ Security platforms require more than simple log storage. This layer provides str
 2. Grafana (dashboards)
 3. OpenTelemetry (distributed traces)
 4. Loki (platform/system log aggregation)
+
+## 🧰 LAYER 12 – MLOps & Reproducibility Layer 
+
+🟤 The **MLOps & Reproducibility Layer** ensures that VigilantEdge’s AI models are credible, repeatable, and production-ready.
+
+Security AI must not be a black box. Every model must be reproducible, versioned, tracked, evaluated, and deployed in a controlled manner. This layer guarantees scientific rigor and operational reliability.
+
+### 🔧Technologies Used:
+1. MLflow (experiment tracking + model registry)
+2. DVC (dataset version control)
+3. ONNX (model export standard)
+4. onnxruntime (optimized inference runtime)
