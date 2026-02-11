@@ -17,3 +17,67 @@ To support **transparency and compliance**, VigilantEdge employs **Explainable A
 
 By combining **adaptive detection**, **autonomous response**, and **continuous learning**, VigilantEdge demonstrates a shift from **reactive web security** toward a **proactive and intelligent defense model**, offering a practical foundation for **next-generation web application protection**.
 
+## 📁 Repository Structure
+
+```text
+│── README.md                     # Project overview, architecture, and usage
+│── requirements.txt              # Python dependencies for the entire system
+│
+├── AI_engine/                    # Core AI and learning components
+│   ├── anomaly_detection/        # Behavioral modeling and anomaly detection models
+│   ├── explainability/           # Explainable AI (XAI) modules for decision transparency
+│   ├── red_teaming/              # AI-driven red teaming and adversarial learning logic
+│   └── zero_day_simulation/      # Simulation of zero-day and unknown attack patterns
+│
+├── config/                       # Centralized configuration management
+│   ├── model_params.yaml         # ML model hyperparameters and tuning settings
+│   ├── system.yaml               # Global system configuration and modes
+│   └── thresholds.yaml           # Security thresholds and risk scoring limits
+│
+├── core/                         # Decision-making and trust evaluation logic
+│   ├── decision_engine/          # Final security decision and action selection
+│   ├── normalizer/               # Request normalization and feature standardization
+│   ├── threat_scoring/           # Risk scoring and threat severity computation
+│   └── trust_engine/             # Zero Trust evaluation and continuous verification
+│
+├── data/                         # Data storage and processing pipeline
+│   ├── features/                # Extracted feature vectors for ML models
+│   ├── processed/               # Cleaned and preprocessed datasets
+│   └── raw/                     # Raw logs, traffic samples, and request data
+│
+├── docs/                         # Documentation and research artifacts
+│   ├── architecture/            # System architecture diagrams and design docs
+│   ├── compliance/              # GDPR, ISO 27001, NIST, and regulatory mappings
+│   └── research/                # Research notes, experiments, and paper drafts
+│
+├── ingestion/                   # Traffic and data ingestion layer
+│   ├── log_collector/           # Collection of access logs and request traces
+│   ├── proxy/                   # Reverse-proxy implementation (HTTP/API inspection)
+│   └── schema/                  # Request/response schemas and validation logic
+│
+├── response_engine/             # Automated response and mitigation actions
+│   ├── deception/               # Deception mechanisms (honeypots, fake endpoints)
+│   ├── mitigation/              # Blocking, rate-limiting, and access control actions
+│   ├── rule_optimization/       # AI-assisted firewall rule refinement
+│   └── self_healing/             # Automated recovery and configuration restoration
+│
+├── scripts/                     # Utility and operational scripts
+│   ├── run_pipeline.sh          # Launches the complete VigilantEdge pipeline
+│   ├── setup_env.sh             # Environment setup and dependency installation
+│   └── simulate_attack.py       # Attack simulation for testing and validation
+│
+├── security/                    # Cryptographic and secret management components
+│   ├── auth/                    # Authentication and identity verification logic
+│   ├── crypto/                  # Cryptographic primitives and secure operations
+│   └── secrets/                 # Secure storage for keys, tokens, and credentials
+│
+├── soc_interface/               # Security Operations Center (SOC) integration
+│   ├── alerts/                  # Alert generation and incident notifications
+│   ├── copilot/                 # AI-assisted SOC analyst support tools
+│   └── dashboard/               # Monitoring and visualization dashboards
+│
+└── tests/                       # Testing and validation suite
+    ├── adversarial_tests/       # Tests against adaptive and intelligent attackers
+    ├── attack_simulations/      # Simulated attack scenarios and replay tests
+    └── performance_tests/       # Load, latency, and scalability testing
+
