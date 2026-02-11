@@ -207,7 +207,7 @@ It is responsible for traffic interception, request routing, API control, and hi
 
 ## 🤖 LAYER 2 – AI & Intelligence Engine
 
-⚪ The **AI & Intelligence Engine Layer** is responsible for behavioral modeling, anomaly detection, zero-day analysis, and explainable security decisions.  
+🟢 The **AI & Intelligence Engine Layer** is responsible for behavioral modeling, anomaly detection, zero-day analysis, and explainable security decisions.  
 This layer transforms raw traffic data into actionable threat intelligence.
 
 ### 🔧Technologies Used:
@@ -217,3 +217,13 @@ This layer transforms raw traffic data into actionable threat intelligence.
 4. PyTorch
 5. SHAP
 6. LIME
+
+## 🔐 LAYER 3 – Security & Zero Trust Layer
+
+🟡 The **Security & Zero Trust Layer** ensures authenticated access, secure key management, and continuous trust verification across all VigilantEdge components.
+This layer enforces cryptographic integrity, identity validation, and secret protection to align with **Zero Trust security principles**.
+
+### 🔧Technologies Used:
+1. cryptography
+2. python-jose (JWT)
+3. HashiCorp Vault 
