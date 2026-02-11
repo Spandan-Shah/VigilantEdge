@@ -200,7 +200,20 @@ type nul > VigilantEdge\README.md
 ⚪ The **Network & Traffic Control Layer** acts as the entry point of VigilantEdge.  
 It is responsible for traffic interception, request routing, API control, and high-speed response handling.
 
-### 🔧 Technologies Used:
-#### 1. Nginx
-#### 2. FastAPI
-#### 3. Redis
+### 🔧Technologies Used:
+1. Nginx
+2. FastAPI
+3. Redis
+
+## 🤖 LAYER 2 – AI & Intelligence Engine
+
+⚪ The **AI & Intelligence Engine Layer** is responsible for behavioral modeling, anomaly detection, zero-day analysis, and explainable security decisions.  
+This layer transforms raw traffic data into actionable threat intelligence.
+
+### 🔧Technologies Used:
+1. NumPy
+2. Pandas
+3. Scikit-Learn
+4. PyTorch
+5. SHAP
+6. LIME
