@@ -312,3 +312,16 @@ It ensures that VigilantEdge is not only resilient against today’s threats but
 1. cryptography (classical crypto foundation)
 2. libsodium / PyNaCl (safe modern crypto APIs)
 3. Open Quantum Safe (OQS) / oqs-provider (PQC algorithm experiments)
+
+## 🗃️ LAYER 10 – Storage, Search & Analytics Layer 
+
+🟠 The **Storage, Search & Analytics Layer** ensures that all security data is stored, indexed, and analyzed in a manner suitable for real-world SOC workflows.
+
+Security platforms require more than simple log storage. This layer provides structured persistence, fast retrieval, searchable indexing, artifact management, and high-speed analytical processing.
+
+### 🔧Technologies Used:
+1. PostgreSQL (incidents, audit, RBAC, workflows)
+2. Redis (cache + rapid enforcement state)
+3. OpenSearch / Elasticsearch (SOC search engine over events/logs)
+4. S3 / MinIO (datasets + model artifacts + large logs)
+5. ClickHouse (high-speed time-series security analytics)
