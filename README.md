@@ -280,3 +280,16 @@ This architecture prevents bottlenecks in the ingestion layer and allows AI proc
 3. Celery (background jobs like scans, retraining, reporting)
 4. RabbitMQ (reliable task queue broker for Celery)
 5. APScheduler (scheduled security jobs, periodic tasks)
+
+🧩 LAYER 8 – Detection Engineering Layer 
+
+🟡 The **Detection Engineering Layer** adds rule-based and protocol-aware detection that complements machine learning models.
+
+In real-world SOC systems, security never relies solely on ML. Instead, it combines **signatures + telemetry + rules + ML** to achieve high precision and operational reliability.
+
+🔧 Technologies Used:
+
+1. Suricata (network IDS signatures + protocol metadata)
+2. Zeek (deep network telemetry extraction)
+3. YARA (payload/pattern matching engine)
+4. Sigma Rules (standard rule format for detections)
