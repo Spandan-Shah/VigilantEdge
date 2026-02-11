@@ -246,9 +246,11 @@ This layer enforces cryptographic integrity, identity validation, and secret pro
 This layer transforms detection into **automated defensive action**, minimizing manual intervention and reducing response latency.
 
 ### 🔧Technologies Used:
-1. FastAPI orchestration
-2. Redis
-3. Custom Python modules
+1. FastAPI orchestration (action APIs + orchestration)
+2. Redis (fast enforcement decisions + cooldowns)
+3. Custom Python Response Modules (mitigation, deception, rollback)
+4. Ansible (repeatable remediation + patch automation)
+5. Argo CD (GitOps) (restore known-good config via GitOps)
 
 ## 📊 LAYER 5 – SOC & Visualization Layer
 
