@@ -246,3 +246,12 @@ This layer ensures that VigilantEdge not only detects and mitigates threats auto
 ## 🔧Technologies:
 1. React
 2. Recharts
+
+## 🧪 LAYER 6 – Testing & Validation
+
+🟢 The **Testing & Validation Layer** ensures the reliability, robustness, and security effectiveness of VigilantEdge under real-world and adversarial conditions.
+This layer validates detection accuracy, response correctness, performance stability, and resilience against adaptive attackers.
+
+## 🔧Technologies:
+1. PyTest
+2. Custom attack simulators
