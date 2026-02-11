@@ -261,3 +261,19 @@ This layer validates detection accuracy, response correctness, performance stabi
 ## 🔧Technologies:
 1. PyTest
 2. Custom attack simulators
+
+## 🧬 LAYER 7 – Event Streaming & Background Processing Layer
+
+The **Event Streaming & Background Processing Layer** ensures VigilantEdge is truly **real-time and scalable**.
+
+Instead of processing everything synchronously (which can drop events and slow down the gateway), this layer buffers traffic, streams events to multiple consumers, and executes heavy tasks asynchronously.
+
+This architecture prevents bottlenecks in the ingestion layer and allows AI processing, analytics, and reporting to scale independently.
+
+### 🔧 Technologies:
+
+1. Apache Kafka (event streaming backbone)
+2. Kafka Connect (pipelines between Kafka ↔ OpenSearch/Postgres)
+3. Celery (background jobs like scans, retraining, reporting)
+4. RabbitMQ (reliable task queue broker for Celery)
+5. APScheduler (scheduled security jobs, periodic tasks)
