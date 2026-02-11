@@ -227,3 +227,13 @@ This layer enforces cryptographic integrity, identity validation, and secret pro
 1. cryptography
 2. python-jose (JWT)
 3. HashiCorp Vault 
+
+## ⚙️ LAYER 4 – Autonomous Response Layer
+
+🔴 The **Autonomous Response Layer** is responsible for executing real-time mitigation, adaptive rule enforcement, and self-healing actions based on decisions produced by the AI and core security engines.
+This layer transforms detection into **automated defensive action**, minimizing manual intervention and reducing response latency.
+
+### 🔧Technologies Used:
+1. FastAPI orchestration
+2. Redis
+3. Custom Python modules
