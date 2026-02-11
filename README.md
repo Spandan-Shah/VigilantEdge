@@ -237,3 +237,12 @@ This layer transforms detection into **automated defensive action**, minimizing 
 1. FastAPI orchestration
 2. Redis
 3. Custom Python modules
+
+## 📊 LAYER 5 – SOC & Visualization Layer
+
+🟣 The **SOC & Visualization Layer** provides real-time visibility, alerting, and human-in-the-loop interaction for security analysts.
+This layer ensures that VigilantEdge not only detects and mitigates threats autonomously but also provides transparent monitoring, explainability, and operational control for Security Operations Center (SOC) teams.
+
+## 🔧Technologies:
+1. React
+2. Recharts
