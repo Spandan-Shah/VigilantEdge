@@ -545,8 +545,6 @@ Install the foundational tools in the exact order below:
 4. **Docker Desktop**
 5. **Enable WSL2 (Ubuntu recommended)**
 
----
-
 ### 📌 After Installation – Verify Setup
 
 Run the following commands in PowerShell or CMD:
@@ -556,3 +554,19 @@ python --version
 node --version
 docker --version
 wsl --status
+```
+
+## 🔹 STEP 2 – Setup Python Environment
+
+After installing core tools, create an isolated Python environment.
+
+This ensures:
+- Clean dependency management  
+- No system-wide conflicts  
+- Reproducible builds  
+
+### 📌 Create Virtual Environment
+
+```powershell
+python -m venv venv
+```
