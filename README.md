@@ -525,3 +525,34 @@ These support threat intelligence sharing, federated learning, blockchain trust,
 - Keeps the host OS clean and controlled  
 
 This phased approach transforms VigilantEdge from a chaotic stack into a **disciplined, production-grade security platform deployment**.
+
+# 🪟 Windows Installation Order
+
+⚠️ **Important:** Windows is not ideal for running Suricata and Zeek natively.  
+The recommended approach is:
+
+> **Windows + WSL2 (Ubuntu) + Docker Desktop**
+
+This provides Linux compatibility while keeping a Windows development environment.
+
+## 🔹 STEP 1 – Install Core Tools
+
+Install the foundational tools in the exact order below:
+
+1. **Git**
+2. **Python 3.10+**
+3. **Node.js (LTS version)**
+4. **Docker Desktop**
+5. **Enable WSL2 (Ubuntu recommended)**
+
+---
+
+### 📌 After Installation – Verify Setup
+
+Run the following commands in PowerShell or CMD:
+
+```powershell
+python --version
+node --version
+docker --version
+wsl --status
