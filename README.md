@@ -567,6 +567,20 @@ This ensures:
 
 ### 📌 Create Virtual Environment
 
-```powershell
+```
 python -m venv venv
+venv\Scripts\activate
+pip install --upgrade pip
+```
+
+## 🔹 STEP 3 – Install Core Python Libraries
+
+After activating the virtual environment, install the required core libraries for VigilantEdge.
+
+### 📌 Install Dependencies
+
+```powershell
+pip install fastapi uvicorn numpy pandas scikit-learn torch shap lime `
+pydantic redis cryptography python-jose networkx mlflow dvc onnx onnxruntime `
+pytest celery
 ```
