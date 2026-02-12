@@ -584,3 +584,24 @@ pip install fastapi uvicorn numpy pandas scikit-learn torch shap lime `
 pydantic redis cryptography python-jose networkx mlflow dvc onnx onnxruntime `
 pytest celery
 ```
+
+## 🔹 STEP 3 – Run Infrastructure via Docker
+
+Instead of installing infrastructure services directly on your OS, run them inside Docker containers.
+
+```powershell
+docker run -d `
+  --name postgres `
+  -p 5432:5432 `
+  -e POSTGRES_PASSWORD=admin `
+  postgres
+  ```
+
+### 🗄 PostgreSQL
+
+```powershell
+docker run -d `
+  --name postgres `
+  -p 5432:5432 `
+  -e POSTGRES_PASSWORD=admin `
+  postgres
