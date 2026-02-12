@@ -391,3 +391,17 @@ Instead of aggregating raw logs into a central system, DASN ensures that models 
 2. PySyft (privacy-preserving ML experiments)
 3. Hyperledger Fabric (tamper-proof intel ledger + provenance)
 4. Go (commonly used in high-perf agents and Fabric ecosystem tooling)
+
+## 🧨 LAYER 16 – Automated Pentesting & Red Team Validation Layer
+
+The **Automated Pentesting & Red Team Validation Layer** ensures that VigilantEdge is continuously tested against controlled attack scenarios in a secure lab environment.
+
+This layer is strictly for defensive validation and security hardening. It is not designed for offensive or unauthorized use.
+
+By integrating automated security testing tools, VigilantEdge can validate detection logic, response accuracy, and system resilience against evolving threats.
+
+### 🔧Technologies Used:
+1. OWASP ZAP (DAST testing for web apps)
+2. Nuclei (template-based scanning for regression testing)
+3. Semgrep (SAST)
+4. Bandit (Python security linting)
