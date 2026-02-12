@@ -363,3 +363,17 @@ It bridges development, security, and operations into a unified workflow.
 4. Helm
 5. GitHub Actions
 6. Trivy (container vulnerability scanning)
+
+## 🕵️ LAYER 14 – Threat Intelligence, OSINT & Dark Web Intelligence Layer 
+
+The **Threat Intelligence, OSINT & Dark Web Intelligence Layer** enriches VigilantEdge detections with external and contextual threat knowledge.
+
+This layer integrates structured intelligence feeds, Indicators of Compromise (IOCs), threat actor mappings, and campaign intelligence to provide context-aware security decisions.
+
+Unlike isolated detection systems, VigilantEdge correlates internal anomalies with global intelligence sources to improve accuracy, reduce false positives, and detect coordinated attack campaigns.
+
+### 🔧Technologies Used:
+
+1. MISP (IOC and threat intel platform)
+2. OpenCTI (threat knowledge graph)
+3. STIX/TAXII tooling (standard threat intel formats + transport)
