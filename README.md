@@ -377,3 +377,17 @@ Unlike isolated detection systems, VigilantEdge correlates internal anomalies wi
 1. MISP (IOC and threat intel platform)
 2. OpenCTI (threat knowledge graph)
 3. STIX/TAXII tooling (standard threat intel formats + transport)
+
+## 🌐 LAYER 15 – DASN: Federated Learning + Blockchain Trust Layer
+
+The **Decentralized AI Security Network (DASN) Layer** enables collaborative defense across multiple deployments without centralizing sensitive data.
+
+This layer introduces federated model training and tamper-proof intelligence sharing, allowing multiple VigilantEdge nodes to learn collectively while preserving data privacy.
+
+Instead of aggregating raw logs into a central system, DASN ensures that models are trained locally and only model updates are shared securely.
+
+### 🔧Technologies Used:
+1. Flower (federated learning orchestration)
+2. PySyft (privacy-preserving ML experiments)
+3. Hyperledger Fabric (tamper-proof intel ledger + provenance)
+4. Go (commonly used in high-perf agents and Fabric ecosystem tooling)
