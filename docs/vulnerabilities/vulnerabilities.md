@@ -276,3 +276,26 @@ JavaScript can be written using only six characters: `[` `]` `(` `)` `!` `+`.
 
 
 > **🛡️ Mitigation Strategy:** Always **Normalize** input (decode and simplify) to a single standard format *before* passing it to the WAF or security validation logic.
+
+
+## 🛑 Why WAFs Fail at This
+
+Even with advanced security rules, Web Application Firewalls (WAFs) often fail to catch encoded or obfuscated attacks due to fundamental architectural limitations.
+
+
+### 1. The Performance Trade-off
+Decoding every incoming request in 10 different ways (URL, Base64, Hex, Unicode, etc.) requires massive CPU power. 
+* **The Reality:** To prevent the website from slowing down or crashing during high traffic, WAFs often skip deep decoding or limit the complexity of their scans.
+
+### 2. Impedance Mismatch
+This is the "Interpretation" problem. The WAF and the Back-end application server simply do not "see" the data the same way.
+* **The Gap:** If the WAF decodes a character to a space, but the database decodes that same character to a quote (`'`), the security check is effectively bypassed.
+
+### 3. Recursive Limits
+To maintain speed, a WAF might only decode a string once (single-pass). 
+* **The Exploit:** If an attacker nests their encoding (e.g., encoding a payload three times), the WAF processes the first layer, sees no threat, and gives up. The actual malicious payload remains "wrapped" until it passes the gatekeeper.
+
+### 💡 Key Takeaway
+**Obfuscation works by hiding the intent of the code until it reaches the final destination.** By the time the data reaches the **Database** or the **User's Browser**, the security checks are over. It is only at this final stage that the payload is "unwrapped," interpreted, and executed.
+
+> **Final Rule:** Security shouldn't rely solely on the WAF. True protection requires **Defense-in-Depth**, where the application itself validates and sanitizes data *after* it has been decoded by the server.
