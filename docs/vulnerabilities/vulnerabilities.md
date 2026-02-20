@@ -265,3 +265,14 @@ Attackers use various methods to break up or hide malicious patterns depending o
 String concatenation (joining) is particularly effective against simple filters. By sending `'ADM' + 'IN'`, the attacker bypasses filters looking for the word `ADMIN`. The WAF sees two harmless strings, but the application combines them into one privileged keyword.
 
 > **Key Takeaway:** To defend against these, WAFs must be capable of **normalization and behavioral analysis**—looking at what the request *does* rather than just what it *looks* like.
+
+## 4. JavaScript Obfuscation (The "JSFuck" Method)
+JavaScript can be written using only six characters: `[` `]` `(` `)` `!` `+`.
+
+
+* **Standard:** `alert(1)`
+* **Obfuscated:** `[][(![]+[])[+[]]+...](1)` (A massive string of brackets).
+* **The Bypass:** A WAF looking for the word "alert" finds nothing. However, the browser's engine calculates the math logic in the brackets, resolves it to the string "alert", and executes it.
+
+
+> **🛡️ Mitigation Strategy:** Always **Normalize** input (decode and simplify) to a single standard format *before* passing it to the WAF or security validation logic.
