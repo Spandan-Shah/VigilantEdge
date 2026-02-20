@@ -147,3 +147,33 @@ This is the "grandfather" of WAF bypasses. It exploits the fact that many securi
 The malicious script executes in the user's browser or on the server because the "gatekeeper" (WAF) was only looking at the surface level, while the "recipient" (Application Server) reached the core payload.
 
 > **Key Takeaway:** To prevent this, WAFs must be configured for **Recursive Decoding**—continuing to decode until no more encoded characters remain.
+
+## 2. Unicode "Best-Fit" Mapping
+
+**Best-Fit Mapping** is a perfect example of a feature designed for "helpfulness" that accidentally created a massive security loophole. It occurs when a system encounters a Unicode character it doesn't support and tries to find the "best" standard ASCII character to replace it with.
+
+
+### 🗣️ The Translator Analogy
+
+Think of it like a translator who, when they don't know a specific technical word, just picks the closest common word they do know. 
+
+* **The Attacker** sends a "fancy" Unicode character that looks like a symbol (e.g., a full-width or mathematical variant of a character).
+* **The WAF** sees the Unicode character, doesn't recognize it as a "bad word," and lets it through.
+* **The Back-end** (Database or OS) tries to be helpful. It thinks, *"I don't support that fancy 'ｓ', I'll just use a standard 's' instead."*
+
+
+### 🛠️ The Transformation Example
+
+An attacker wants to bypass a filter looking for the keyword `admin`.
+
+| Step | Input / Payload | System Action |
+| :--- | :--- | :--- |
+| **1. Payload** | `ａｄｍｉｎ` | Attacker uses Full-width Latin characters. |
+| **2. WAF Scan** | `ａｄｍｉｎ` | The WAF scans for `admin`. It finds no match because the character codes are different. |
+| **3. Back-end** | `admin` | The application performs *"Best-Fit"* mapping to normalize the input. |
+
+
+### ⚠️ Why It Works
+The vulnerability exists because the **Normalization** happens *after* the security check. By the time the string is turned back into a dangerous command, it has already bypassed the gatekeeper.
+
+> **Key Takeaway:** To mitigate this, systems should perform **Normalization** (converting Unicode to a standard format) *before* the security rules are applied.
