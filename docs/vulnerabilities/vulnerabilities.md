@@ -233,3 +233,35 @@ While Unicode isn't new, this vulnerability remains critical because of **Micros
 5.  **PostgreSQL** (Database)
 
 **The Danger:** If even one of these systems handles Unicode normalization differently than the others, an attacker can find a **"blind spot"** to hide their payload.
+
+## 3. SQL Hex and String Concatenation
+
+In SQL injection, attackers often avoid using plain-text keywords like `SELECT` or `UNION`. Instead, they use alternative data representations that are functionally identical but visually unrecognizable to a signature-based WAF.
+
+### 🔢 The Hexadecimal Obfuscation
+Instead of sending `SELECT * FROM users`, which would be flagged immediately, an attacker might send the **Hexadecimal** equivalent:
+
+`0x53454c454354202a2046524f4d207573657273`
+
+
+### 🔍 Why It Works
+1.  **The WAF Scan:** The WAF sees a long, seemingly random string of alphanumeric characters. Since it doesn't match the pattern for a known SQL command, it marks the request as **SAFE**.
+2.  **The Database Execution:** When the string reaches the database engine (like MySQL or MSSQL), the engine identifies the `0x` prefix. It automatically converts the hex back into text and executes the malicious command.
+
+
+### 🛠️ Common Obfuscation Techniques
+
+Attackers use various methods to break up or hide malicious patterns depending on the target system:
+
+| Technique | Example | Target System |
+| :--- | :--- | :--- |
+| **Hex Encoding** | `SELECT` $\rightarrow$ `0x53454c...` | MySQL / MSSQL |
+| **String Joining** | `'SEL' + 'ECT'` | Any Database Engine |
+| **Base64** | `PHNjcmlwdD4=` | APIs / JavaScript |
+| **HTML Entities** | `&lt;script&gt;` | Browsers (XSS) |
+
+
+### 💡 The "Fragmented" Attack
+String concatenation (joining) is particularly effective against simple filters. By sending `'ADM' + 'IN'`, the attacker bypasses filters looking for the word `ADMIN`. The WAF sees two harmless strings, but the application combines them into one privileged keyword.
+
+> **Key Takeaway:** To defend against these, WAFs must be capable of **normalization and behavioral analysis**—looking at what the request *does* rather than just what it *looks* like.
