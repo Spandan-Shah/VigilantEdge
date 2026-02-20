@@ -121,3 +121,29 @@ The vulnerability isn't in the encoding itself; it’s in the **Interpretation**
 1. **The WAF** scans the traffic for "bad words" (like `SELECT` or `<script>`).
 2. **The Attacker** disguises those words using encoding the WAF isn't configured to decode.
 3. **The Back-end** is often more "intelligent" or flexible, decoding the payload and executing the malicious command after it has already cleared the gatekeeper.
+
+
+## 1. URL Encoding & The Double-Decode Trap
+
+This is the "grandfather" of WAF bypasses. It exploits the fact that many security filters are configured to perform only a single pass of decoding, while back-end servers may be configured to decode recursively.
+
+
+### 🛠️ The Payload Evolution
+* **Original:** `<script>`
+* **Simple Encoding:** `%3cscript%3e` (Most WAFs catch this instantly).
+* **Double Encoding:** `%253cscript%253e`
+
+
+### 🔄 How the Bypass Works
+
+| Step | Entity | Action | Resulting String |
+| :--- | :--- | :--- | :--- |
+| **1** | **WAF** | Receives the request and decodes `%25` into a `%`. | `%3cscript%3e` |
+| **2** | **WAF Check** | Scans the result. Since it doesn't perform a *second* pass, it sees this as harmless text. | **"CLEAN" (Passed)** |
+| **3** | **App Server** | Receives the string and performs its own default decoding. | `<script>` |
+
+
+### ⚠️ The Result
+The malicious script executes in the user's browser or on the server because the "gatekeeper" (WAF) was only looking at the surface level, while the "recipient" (Application Server) reached the core payload.
+
+> **Key Takeaway:** To prevent this, WAFs must be configured for **Recursive Decoding**—continuing to decode until no more encoded characters remain.
