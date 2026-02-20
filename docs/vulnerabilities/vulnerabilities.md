@@ -69,3 +69,34 @@ While the smuggled data is sitting in the back-end's buffer, an innocent user se
 GET /home HTTP/1.1
 Host: vulnerable-website.com
 ```
+
+# 🎭 Encoding and Obfuscation
+
+> **The "Art of Disguise":** If an attacker can change the pattern of a command without changing its meaning, the WAF fails to detect it.
+
+
+### 🛡️ The Pattern-Matching Problem
+Web Application Firewalls (WAFs) act as gatekeepers, scanning incoming traffic for known "bad words" or signatures, such as:
+* `SELECT` or `UNION` (SQL Injection)
+* `<script>` (Cross-Site Scripting)
+* `../` (Path Traversal)
+
+Attackers win by making these "bad words" unrecognizable to the WAF while ensuring they remain perfectly executable for the back-end.
+
+### 🛠️ Common Techniques
+
+| Technique | How it Works | Example |
+| :--- | :--- | :--- |
+| **URL Encoding** | Replaces characters with `%` followed by their ASCII hex equivalent. | `SELECT` becomes `%53%45%4c%45%43%54` |
+| **Hex/Unicode** | Uses different character sets that the back-end might decode but the WAF ignores. | `<` becomes `\u003c` |
+| **Double Encoding** | Encoding a character twice (e.g., `%2527`) to bypass WAFs that only perform one round of decoding. | `'` → `%27` → `%2527` |
+| **Comment Injection** | Inserting "noise" that the WAF sees as text but the Database ignores. | `SEL/*comment*/ECT` |
+
+
+### ⚠️ The Vulnerability: The "Language Gap"
+The danger occurs when the **WAF** and the **Back-end** don't "speak" the same encoding language. 
+
+1. **The WAF** scans the encoded string, doesn't recognize the "bad word," and marks it as **SAFE**.
+2. **The Back-end** receives the string, decodes it back to the original malicious command, and **EXECUTES** it.
+
+> **Key Takeaway:** A WAF is only as good as its decoding engine. If it can't "unmask" the disguise, the malicious command slips right through.
