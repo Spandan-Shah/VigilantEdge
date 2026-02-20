@@ -177,3 +177,47 @@ An attacker wants to bypass a filter looking for the keyword `admin`.
 The vulnerability exists because the **Normalization** happens *after* the security check. By the time the string is turned back into a dangerous command, it has already bypassed the gatekeeper.
 
 > **Key Takeaway:** To mitigate this, systems should perform **Normalization** (converting Unicode to a standard format) *before* the security rules are applied.
+
+## 🔡 The Core Concept
+
+Unicode contains over 140,000 characters. However, many legacy systems (such as older versions of Windows or specific database drivers) were originally built to handle only the basic 128 ASCII characters.
+
+When an application receives a "fancy" Unicode character but is configured to use a simpler character set (like **Latin-1** or **Windows-1252**), it performs a **Best-Fit Mapping** to force the data into a format it understands.
+
+
+## 📂 A Detailed Example: The "Full-Width" Bypass
+
+This technique is most commonly used in **Path Traversal** attacks to bypass directory filters.
+
+
+### 1. The Normal Character
+A standard period (dot) is **ASCII 46** (Hex `$2e$`). A WAF is strictly programmed to look for the pattern `../` to prevent attackers from exiting the web root folder.
+
+### 2. The "Fancy" Unicode Character
+Unicode includes a character called the **Full-width Full Stop (．)**.
+* **Code Point:** $U+FF0E$
+* **Appearance:** It looks like a normal dot but is slightly wider.
+
+### 3. The Attack Workflow
+
+| Stage | Action | Resulting String |
+| :--- | :--- | :--- |
+| **The Payload** | Attacker sends a traversal attempt using Unicode. | `．．/etc/passwd` |
+| **WAF Inspection** | The WAF looks for `$2e$`. It sees `$FF0E$`. It assumes this is harmless punctuation. | **"CLEAN" (Passed)** |
+| **Backend Processing** | The server (e.g., legacy ASP.NET or Windows API) encounters the unknown character. | `．．/` |
+| **The Mapping** | The system "helpfully" converts the Unicode dots into standard ASCII dots. | `../etc/passwd` |
+
+
+## 📑 Common "Best-Fit" Mappings
+
+Attackers use these specific mappings to bypass different types of security filters:
+
+| Unicode Character | Description | Mapping (ASCII) | Potential Use |
+| :--- | :--- | :--- | :--- |
+| **ʻ** ($U+02BB$) | Modifier Letter Turned Comma | `'` | SQL Injection |
+| **＜** ($U+FF1C$) | Full-width Less-Than Sign | `<` | XSS (Script tags) |
+| **K** ($U+212A$) | Kelvin Sign | `K` | Case-sensitive bypass |
+| **⁄** ($U+2044$) | Fraction Slash | `/` | Path Traversal |
+
+
+> **Security Rule:** Always perform **Normalization** (converting Unicode to a standard form) *before* passing the string to the WAF or security validation logic.
