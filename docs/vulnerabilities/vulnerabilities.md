@@ -100,3 +100,24 @@ The danger occurs when the **WAF** and the **Back-end** don't "speak" the same e
 2. **The Back-end** receives the string, decodes it back to the original malicious command, and **EXECUTES** it.
 
 > **Key Takeaway:** A WAF is only as good as its decoding engine. If it can't "unmask" the disguise, the malicious command slips right through.
+
+## 📜 The Background: Why Encoding Exists
+
+In the early days of the internet, systems were fragile. If you tried to send a "space" character or a "quote" in a URL, it would break the connection or confuse the server. 
+
+
+To fix this, **RFC 3986** (and others) created standard ways to "package" special characters so they could travel safely across the wire. This is called **Encoding**.
+
+
+### 🔍 The Core Vulnerability: Interpretation
+
+The vulnerability isn't in the encoding itself; it’s in the **Interpretation**. 
+
+> **The Customs Officer Analogy** 🛂
+> A WAF is like a customs officer reading a passport. If the passport is written in a language the officer doesn't speak fluently (like an obscure **Unicode** variant), they might let it pass. However, if the person at the **destination** (the back-end) *does* speak it, the "smuggled" message gets through.
+
+
+### ⚠️ Why It Bypasses Security
+1. **The WAF** scans the traffic for "bad words" (like `SELECT` or `<script>`).
+2. **The Attacker** disguises those words using encoding the WAF isn't configured to decode.
+3. **The Back-end** is often more "intelligent" or flexible, decoding the payload and executing the malicious command after it has already cleared the gatekeeper.
