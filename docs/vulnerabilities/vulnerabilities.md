@@ -221,3 +221,15 @@ Attackers use these specific mappings to bypass different types of security filt
 
 
 > **Security Rule:** Always perform **Normalization** (converting Unicode to a standard form) *before* passing the string to the WAF or security validation logic.
+
+## 🌐 Why This is a "Modern" Vulnerability
+
+While Unicode isn't new, this vulnerability remains critical because of **Microservices**. In a modern architecture, a single request might pass through a complex chain of systems:
+
+1.  **Cloudflare** (WAF)
+2.  **NGINX** (Load Balancer)
+3.  **Node.js** (API Gateway)
+4.  **Java** (Back-end Service)
+5.  **PostgreSQL** (Database)
+
+**The Danger:** If even one of these systems handles Unicode normalization differently than the others, an attacker can find a **"blind spot"** to hide their payload.
