@@ -304,3 +304,32 @@ By integrating **Continuous Red Teaming (Layer 16)**, **Intent Analysis (Layer 2
 
 > **Final Thought:** You can no longer afford to trust a "Label." You must enforce the **Logic**.
 
+## 🔍 Fatal Flaw #1: Context Blindness (The Radware 2025 Case)
+
+The Radware discovery in 2025 exposed a fundamental architectural assumption that turned "Top-Tier" WAFs into open doors.
+
+### 📜 The Logic Gap: The "Body-less" GET
+In standard web development, an **HTTP GET** request is used to retrieve data. Traditionally, data is passed only through the URL as query parameters (e.g., `?id=123`).
+
+**The WAF Assumption:** > "GET requests don't have bodies. Therefore, I only need to inspect the URL string. I can skip inspecting the body to save CPU cycles and improve performance."
+
+
+
+### 💣 The Exploit: The Hidden Payload
+Attackers realized they could send a perfectly valid `GET` request but "smuggle" a massive SQL injection or Remote Code Execution (RCE) payload inside the **Request Body**.
+
+* **The Syntax:** The URL looked completely harmless: `GET /index.php`.
+* **The Stealth:** The WAF scanned the URL, found no malicious patterns, and waved the request through.
+* **The Impact:** The backend server (often a modern framework like Node.js or Python) *did* read the body. It processed the hidden SQL command, giving the attacker full access to the database.
+
+
+
+### 🛡️ How VigilantEdge Eradicates This Flaw
+VigilantEdge doesn't make assumptions based on HTTP methods. It treats every byte of a request as potentially hostile.
+
+1.  **Protocol Enforcement (Layer 4):** Our system identifies "Malformed" or "Non-Standard" requests immediately. If a `GET` request arrives with a body, it is flagged for deep inspection by default.
+2.  **Full-Stack Inspection:** Unlike the "Titans" who skip the body to save performance, our **Layer 2 AI** uses optimized vector processing to scan the entire request package—URL, Headers, and Body—in parallel, ensuring zero blind spots.
+3.  **Red-Team Discovery (Layer 16):** Because our system is constantly "attacking" itself, it would have tested "Body-in-GET" scenarios during the initial setup, forcing the system to create a protective rule before a real hacker ever arrived.
+
+
+> **Key Takeaway:** The Radware flaw wasn't a failure of "signatures"; it was a failure of **Architecture.** If your security guard only looks at the front of your ID card and ignores the back, it’s only a matter of time before someone hides a threat on the other side.
