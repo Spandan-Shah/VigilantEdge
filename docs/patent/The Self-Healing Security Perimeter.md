@@ -118,3 +118,33 @@ In 2025, researchers discovered a massive oversight in several top-tier WAF prov
 
 ### ⚠️ Why This is Fatal
 Traditional WAFs are **Stateless Gatekeepers**. They look at a single request in isolation. They don't understand the *state* of the application or the *intent* of the user's journey. If the syntax is clean, the request is "safe"—even if it's logically designed to destroy the system.
+
+## 🛡️ The ACME Path Attack: When "Trust" Becomes a Weapon - Cloudfare ACME Validation Bypass - January 2026
+
+In this attack, hackers didn't "break" the WAF; they simply convinced the WAF to turn itself off by exploiting a predefined logic flaw.
+
+
+### 1. The Syntax: "The Trusted Label"
+
+To understand this, you need to know about **ACME** (Automatic Certificate Management Environment). This is the system that provides your website with an SSL certificate. To verify you own a domain, a Certificate Authority (CA) sends a bot to a specific hidden path:
+
+`yourdomain.com/.well-known/acme-challenge/{TOKEN}`
+
+#### 🔍 The Syntax Rule
+In early 2026, researchers found that many enterprise WAFs were programmed with a simple, high-performance rule to avoid disrupting site uptime:
+
+> *"If a request is going to **/.well-known/acme-challenge/**, it is a Certificate Authority bot. Disable all security filters for this request so we don't accidentally block the SSL renewal."*
+
+
+### 🔓 The Logic Exploit
+
+The WAF looked only at the **Syntax** (the characters in the URL) and saw a "Trusted Path." Because it prioritized speed and "helpfulness" (ensuring the SSL didn't expire), it made a fatal assumption:
+
+* **The Assumption:** Only a legitimate CA bot would ever visit this path.
+* **The Reality:** Attackers began appending malicious payloads to that exact URL. 
+
+
+Because the WAF saw the "trusted label" at the start of the path, it stopped inspecting the rest of the request. It didn't check for SQL injection, XSS, or RCE payloads hidden in the headers or the body—it simply "waved the hackers through" the open gate.
+
+
+> **The Lesson:** Trusting a path based purely on its name is a logic failure. This is why VigilantEdge implements **Zero-Trust Inspection**, where even "whitelisted" paths are still scanned for malicious patterns at the autonomous layer.
