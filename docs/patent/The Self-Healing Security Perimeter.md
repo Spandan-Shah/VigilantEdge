@@ -174,3 +174,40 @@ VigilantEdge solves this through **Stateful Inspection**. Instead of static rule
 2.  **No Blind Spots:** Even when a path is "whitelisted" for performance, the system maintains a **baseline inspection** of the request headers and body to ensure the "trusted" visitor isn't carrying a "briefcase bomb."
 
 > **The VigilantEdge Axiom:** Trust is a state, not a location. Just because a request is in the "right place" doesn't mean it has the "right intent."
+
+## 💣 How the Exploit Worked: The "Double-Tap"
+
+The researchers (from a group called **FearsOff**) realized that once they were inside the "Security-Free Hallway," they could use **Path Traversal** to attack the backend while using the WAF's own whitelist as a shield.
+
+### 🛠️ The Anatomy of the Payload
+The attacker sends a request formatted like this:
+`example.com/.well-known/acme-challenge/..;/admin/config`
+
+
+### 🔍 Syntax vs. Logic: The Disconnect
+
+| Entity | Perspective | Action |
+| :--- | :--- | :--- |
+| **WAF (Syntax)** | Sees `/.well-known/acme-challenge/` at the start of the string. | **Action:** Disables security filters and allows the request through (Bypass). |
+| **Backend (Logic)** | Sees the `..;/` sequence (common in frameworks like Spring Boot or Tomcat). | **Action:** "Normalizes" the path, strips the ACME prefix, and executes the `/admin/config` command. |
+
+
+
+### 📊 Real Data from the 2026 Disclosure
+
+The impact of this logic flaw was massive, proving that "trusted paths" are often the weakest link in a security perimeter.
+
+* **Global Impact:** Over **12.5% of all Cloudflare-protected sites** were theoretically bypassable.
+* **Vulnerable Frameworks:**
+    * **Spring Boot:** Accessing `/actuator` endpoints to dump system info.
+    * **Next.js:** Exploiting internal SSR (Server-Side Rendering) data paths.
+    * **PHP:** Triggering Local File Inclusion (LFI).
+
+
+
+### 🔓 The Reveal: The "Shield" becomes the Weapon
+The ultimate success of this exploit was its simplicity. Hackers were able to pull **Database Credentials** and **API Keys** from the environment variables of "protected" servers. 
+
+They weren't "hacking" the firewall; they were simply standing in the one spot the firewall was told to ignore.
+
+> **Key Takeaway:** If your WAF trusts a path based on its name without verifying the **application state**, it isn't a firewall—it's a suggestion.
